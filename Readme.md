@@ -1,5 +1,5 @@
 # Docker Compose
-[aws cli command reference](https://docs.aws.amazon.com/cli/latest/reference/#available-services)
+Docker Compose is a tool used to run multi-container Docker applications. It allows you to define and run multiple containers as a single application, providing an easy way to manage, configure, and deploy your containers
 
 # Compose Commands
 
@@ -58,8 +58,8 @@ A Docker Compose service can be configured with the following options:
 ### Docker Compose File Structure
 A Docker Compose file consists of the following sections:
 
-1. version: The version of the Docker Compose file format to use.Example: version: '3'
-2. services: The services to run as part of the Docker Compose application.Example:
+1. *version:* The version of the Docker Compose file format to use.Example: version: '3'
+2. *services:* The services to run as part of the Docker Compose application.Example:
 ```
 services:
   app:
@@ -69,7 +69,7 @@ services:
     environment:
       DEBUG: "true"
 ```
-3. networks: The networks to create and connect the services in the Docker Compose application.
+3. *networks:* The networks to create and connect the services in the Docker Compose application.
 
 - `networks:` Defines a list of custom networks to create.
 - `driver:` Specifies the network driver to use.
@@ -84,7 +84,7 @@ networks:
     driver: bridge 
 ```
 
-4. volumes: The volumes to create and share between the containers in the Docker Compose application.
+4. *volumes:* The volumes to create and share between the containers in the Docker Compose application.
 
 - `volumes:` Defines a list of named volumes to create.
 - `driver:` Specifies the volume driver to use.
@@ -137,7 +137,7 @@ networks:
   mynet:
 volumes:
   db_data:
-  
+
 ```
 This configuration defines two services named "web" and "db" that use a custom network named "mynet" and a named volume named "db_data". The "web" service builds an image from the Dockerfile in the current directory, exposes port 5000 on the host machine, mounts the ./app directory as a volume in the container, and connects to the "mynet" network. The "db" service uses the "postgres" image, mounts the "db_data" volume, and connects to the "mynet" network.
 
