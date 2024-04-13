@@ -3,31 +3,31 @@
 
 # Compose Commands
 
-- docker compose version
-- docker compose config - validates and displays the configuration of the services defined in the docker-compose.yml file.
-- docker compose start - starts the containers for the services defined in the docker-compose.yml file.
-- docker compose stop - stops the containers for the services defined in the docker-compose.yml file.
-- docker compose restart - restarts the containers for the services defined in the docker-compose.yml file.
-- docker compose run  
-- docker compose create
-- docker compose rm - removes the stopped containers for the services defined in the docker-compose.yml file.
-- docker compose attach
-- docker compose pause - pauses the containers for the services defined in the docker-compose.yml file.
-- docker compose unpause - unpauses the containers for the services defined in the docker-compose.yml file.
-- docker compose wait
-- docker compose up - starts all the services defined in the docker-compose.yml file.
-- docker compose down - stops and removes all the containers, networks, and volumes created by docker-compose up.
-- docker compose ps - lists all the running containers for the services defined in the docker-compose.yml file.
-- docker compose top
-- docker compose events
-- docker compose logs - shows the logs of the containers for the services defined in the docker-compose.yml file.
-- docker compose images
-- docker compose build -  builds or rebuilds the Docker images of the services defined in the docker-compose.yml file.
-- docker compose push
-- docker compose cp
-- docker compose exec - runs a command inside a running container for a service defined in the docker-compose.yml file.
-- docker-compose pull - pulls the latest images for the services defined in the docker-compose.yml file.
-- docker-compose kill - sends a SIGKILL signal to the containers for the services defined in the docker-compose.yml file.
+- ` docker compose version `
+- ` docker compose config ` - validates and displays the configuration of the services defined in the docker-compose.yml file.
+- ` docker compose start ` - starts the containers for the services defined in the docker-compose.yml file.
+- ` docker compose stop ` - stops the containers for the services defined in the docker-compose.yml file.
+- ` docker compose restart ` - restarts the containers for the services defined in the docker-compose.yml file.
+- ` docker compose run ` 
+- ` docker compose create `
+- ` docker compose rm ` - removes the stopped containers for the services defined in the docker-compose.yml file.
+- ` docker compose attach `
+- ` docker compose pause ` - pauses the containers for the services defined in the docker-compose.yml file.
+- ` docker compose unpause ` - unpauses the containers for the services defined in the docker-compose.yml file.
+- ` docker compose wait `
+- ` docker compose up ` - starts all the services defined in the docker-compose.yml file.
+- ` docker compose down ` - stops and removes all the containers, networks, and volumes created by docker-compose up.
+- ` docker compose ps ` - lists all the running containers for the services defined in the docker-compose.yml file.
+- ` docker compose top `
+- ` docker compose events `
+- ` docker compose logs ` - shows the logs of the containers for the services defined in the docker-compose.yml file.
+- ` docker compose images `
+- ` docker compose build ` -  builds or rebuilds the Docker images of the services defined in the docker-compose.yml file.
+- ` docker compose push `
+- ` docker compose cp `
+- ` docker compose exec ` - runs a command inside a running container for a service defined in the docker-compose.yml file.
+- ` docker-compose pull ` - pulls the latest images for the services defined in the docker-compose.yml file.
+- ` docker-compose kill ` - sends a SIGKILL signal to the containers for the services defined in the docker-compose.yml file.
 
 
 # Compose File
@@ -46,13 +46,13 @@ Use the following links to navigate key sections of the Compose Specification.
 ### Docker Compose Service Configuration
 A Docker Compose service can be configured with the following options:
 
-- build: Specifies the path to the Dockerfile used to build the service image.
-- image: Specifies the name of the Docker image to use for the service.
-- container_name: Specifies the name of the container.
-- ports: Specifies the port mapping between the host system and the container.
-- environment: Specifies environment variables to be set in the container.
-- networks: Specifies the networks to connect the container to.
-- volumes: Specifies the volumes to mount in the container.
+- `build:` Specifies the path to the Dockerfile used to build the service image.
+- `image:` Specifies the name of the Docker image to use for the service.
+- `container_name:` Specifies the name of the container.
+- `ports:` Specifies the port mapping between the host system and the container.
+- `environment:` Specifies environment variables to be set in the container.
+- `networks:` Specifies the networks to connect the container to.
+- v`olumes:` Specifies the volumes to mount in the container.
 
 
 ### Docker Compose File Structure
@@ -71,10 +71,10 @@ services:
 ```
 3. networks: The networks to create and connect the services in the Docker Compose application.
 
-networks: Defines a list of custom networks to create.
-driver: Specifies the network driver to use.
-name: Specifies the name of the network.
-external: Specifies an existing network to connect to.
+- `networks:` Defines a list of custom networks to create.
+- `driver:` Specifies the network driver to use.
+- `name:` Specifies the name of the network.
+- `external:` Specifies an existing network to connect to.
 
 
 Example:
@@ -86,10 +86,10 @@ networks:
 
 4. volumes: The volumes to create and share between the containers in the Docker Compose application.
 
-volumes: Defines a list of named volumes to create.
-driver: Specifies the volume driver to use.
-name: Specifies the name of the volume.
-external: Specifies an existing volume to use.
+- `volumes:` Defines a list of named volumes to create.
+- `driver:` Specifies the volume driver to use.
+- `name:` Specifies the name of the volume.
+- `external:` Specifies an existing volume to use.
 
 
 Example:
@@ -137,6 +137,7 @@ networks:
   mynet:
 volumes:
   db_data:
+  
 ```
 This configuration defines two services named "web" and "db" that use a custom network named "mynet" and a named volume named "db_data". The "web" service builds an image from the Dockerfile in the current directory, exposes port 5000 on the host machine, mounts the ./app directory as a volume in the container, and connects to the "mynet" network. The "db" service uses the "postgres" image, mounts the "db_data" volume, and connects to the "mynet" network.
 
