@@ -58,8 +58,8 @@ A Docker Compose service can be configured with the following options:
 ### Docker Compose File Structure
 A Docker Compose file consists of the following sections:
 
-1. *version:* The version of the Docker Compose file format to use.Example: version: '3'
-2. *services:* The services to run as part of the Docker Compose application.Example:
+1. **version:** The version of the Docker Compose file format to use.Example: version: '3'
+2. **services:** The services to run as part of the Docker Compose application.Example:
 ```
 services:
   app:
@@ -69,7 +69,7 @@ services:
     environment:
       DEBUG: "true"
 ```
-3. *networks:* The networks to create and connect the services in the Docker Compose application.
+3. **networks:** The networks to create and connect the services in the Docker Compose application.
 
 - `networks:` Defines a list of custom networks to create.
 - `driver:` Specifies the network driver to use.
@@ -84,7 +84,7 @@ networks:
     driver: bridge 
 ```
 
-4. *volumes:* The volumes to create and share between the containers in the Docker Compose application.
+4. **volumes:** The volumes to create and share between the containers in the Docker Compose application.
 
 - `volumes:` Defines a list of named volumes to create.
 - `driver:` Specifies the volume driver to use.
