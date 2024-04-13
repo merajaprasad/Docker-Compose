@@ -58,8 +58,10 @@ A Docker Compose service can be configured with the following options:
 ### Docker Compose File Structure
 A Docker Compose file consists of the following sections:
 
-1. **Version:** The version of the Docker Compose file format to use.Example: version: '3'
-2. **Services:** The services to run as part of the Docker Compose application.Example:
+1. **Version:** The version of the Docker Compose file format to use. Example: `version: '3'`
+2. **Services:** The services to run as part of the Docker Compose application.
+
+Example:
 ```
 services:
   app:
