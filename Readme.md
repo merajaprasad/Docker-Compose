@@ -16,6 +16,7 @@ Docker Compose is a tool used to run multi-container Docker applications. It all
 - ` docker compose unpause ` - unpauses the containers for the services defined in the docker-compose.yml file.
 - ` docker compose wait `
 - ` docker compose up ` - starts all the services defined in the docker-compose.yml file.
+- ` docker compose up -d ` - starts all the services/container in background defined in the docker-compose.yml file.
 - ` docker compose down ` - stops and removes all the containers, networks, and volumes created by docker-compose up.
 - ` docker compose ps ` - lists all the running containers for the services defined in the docker-compose.yml file.
 - ` docker compose top `
@@ -23,6 +24,7 @@ Docker Compose is a tool used to run multi-container Docker applications. It all
 - ` docker compose logs ` - shows the logs of the containers for the services defined in the docker-compose.yml file.
 - ` docker compose images `
 - ` docker compose build ` -  builds or rebuilds the Docker images of the services defined in the docker-compose.yml file.
+- ` docker compose up -d --build ` - build images and starts all the services/container in background defined in the docker-compose.yml file.
 - ` docker compose push `
 - ` docker compose cp `
 - ` docker compose exec ` - runs a command inside a running container for a service defined in the docker-compose.yml file.
@@ -140,4 +142,71 @@ volumes:
 
 ```
 This configuration defines two services named "web" and "db" that use a custom network named "mynet" and a named volume named "db_data". The "web" service builds an image from the Dockerfile in the current directory, exposes port 5000 on the host machine, mounts the ./app directory as a volume in the container, and connects to the "mynet" network. The "db" service uses the "postgres" image, mounts the "db_data" volume, and connects to the "mynet" network.
+
+
+### Example 2: 3-tier application with custom volumes
+```
+version: "3.8"
+services:
+  mongodb:
+      container_name: mongo
+      image: mongo:latest #pull mongodb latest image from dockerhub
+      ports:
+        - "27017:27017"
+
+  backend:
+      container_name: backend
+      build: ./backend # docker file location to build image
+      env_file:
+        - ./backend/.env.sample
+      ports:
+        - "5000:5000"
+      depends_on: # backend-container depend-on mongodb-container to create
+        - mongodb
+
+  frontend:
+      container_name: frontend
+      build: ./frontend # docker file location to build image
+      env_file:
+        - ./backend/.env.sample
+      ports:
+        - "5173:5173"
+
+```
+**Now adding Volumes**
+```
+version: "3.8"
+services:
+  mongodb:
+    container_name: mongo
+    image: mongo:latest # pull mongodb latest image from dockerhub
+    volumes:  # maping volume for sample data
+      - ./backend/data:/data # hostpath : containerpath
+    ports:
+      - "27017:27017"
+
+  backend:
+    container_name: backend
+    build: ./backend # docker file location to build image
+    env_file:
+      - ./backend/.env.sample
+    ports:
+      - "5000:5000"
+    depends_on: # backend-container depend-on mongodb-container to create
+      - mongodb
+
+  frontend:
+    container_name: frontend
+    build: ./frontend # docker file location to build image
+    env_file:
+      - ./backend/.env.sample
+    ports:
+      - "5173:5173"
+
+# Declaring the volume
+
+volumes:
+  data:
+
+```
 
