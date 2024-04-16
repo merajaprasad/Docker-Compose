@@ -34,7 +34,7 @@ Docker Compose is a tool used to run multi-container Docker applications. It all
 
 # Compose File
 
-Docker Compose relies on a YAML configuration file, usually named compose.yaml., written in YAML language.
+Docker Compose relies on a YAML configuration file, usually named compose.yaml, written in YAML language.
 
 Use the following links to navigate key sections of the Compose Specification.
 1. [Version and name top-level elements](https://docs.docker.com/compose/compose-file/04-version-and-name/)
@@ -144,7 +144,7 @@ volumes:
 This configuration defines two services named "web" and "db" that use a custom network named "mynet" and a named volume named "db_data". The "web" service builds an image from the Dockerfile in the current directory, exposes port 5000 on the host machine, mounts the ./app directory as a volume in the container, and connects to the "mynet" network. The "db" service uses the "postgres" image, mounts the "db_data" volume, and connects to the "mynet" network.
 
 
-### Example 2: 3-tier application with custom volumes
+### Example 3: three-tier application with custom volumes
 ```
 version: "3.8"
 services:
